@@ -171,7 +171,7 @@ add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
 //GOOGLE MAP INIT. initMap is a js function name from custom-gmap.js
 add_action('wp_head', 'wpb_add_googlemap');
 function wpb_add_googlemap() { 
- echo ' <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOEHcUXEjPE4j4vaB_i8ytk0j0762t4Hw&callback=initMap" async defer></script>';
+ echo ' <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLEAPIKEY&callback=initMap" async defer></script>';
 
 }
 
