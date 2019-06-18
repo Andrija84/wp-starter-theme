@@ -9,7 +9,11 @@
 							<nav>
 							  <ul class="main-menu-list">
 							  <div>
-								<li><a href="#">home</a></li>
+								<?php wp_nav_menu(array(
+											'theme_location'   => 'main_menu',
+											'walker' => new Main_Menu_Sublevel_Walker()
+								)); ?>
+								
 							  </div>	
 
 							  </ul>
@@ -18,3 +22,6 @@
 				</div>
 			</div>
 	</header>
+	
+
+

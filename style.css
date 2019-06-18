@@ -10,14 +10,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
  @font-face {
      font-family: 'Bauer-Bodoni-Std-Roman';
-     src: local('Bauer-Bodoni-Std-Roman'), url(../oompa-theme/fonts/Bauer-Bodoni-Std-Roman.otf) format('opentype');
+     src: local('Bauer-Bodoni-Std-Roman'), url(./fonts/Bauer-Bodoni-Std-Roman.otf) format('opentype');
 }
  @font-face {
      font-family: 'Bauer-Bodoni-Std-Bold';
-     src: local('Bauer-Bodoni-Std-Bold'), url(../oompa-theme/fonts/Bauer-Bodoni-Std-Bold.otf) format('opentype');
+     src: local('Bauer-Bodoni-Std-Bold'), url(./fonts/Bauer-Bodoni-Std-Bold.otf) format('opentype');
 }
 /* RESET */
  html, body {
+	 width:100%;
+	 height:100%;
      margin: 0;
      padding: 0;
      border: 0;
@@ -34,19 +36,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
      -webkit-text-size-adjust: 100%;
      -ms-text-size-adjust: 100%;
 }
- html {
-     width:100%;
-     height:100%;
-}
  ol, ul {
      list-style: none;
-}
- blockquote, q {
-     quotes: none;
-}
- blockquote:before, blockquote:after, q:before, q:after {
-     content: '';
-     content: none;
+	 padding:0;
+	 margin:0;
 }
  table {
      border-collapse: collapse;
@@ -150,6 +143,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
      border-width: 1px 0 0;
      clear: both;
      margin:0 auto;
+	 width:100%;
      height: 0px;
      position:relative;
 }
@@ -162,7 +156,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
      left: 0;
      right: 0;
      top:0;
-     position:fixed;
 }
  .logo{
      display:inline-block;
@@ -342,4 +335,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  #footer i:hover{
      color:#4e4e4e!important;
 }
+
+.footer-menu-list li{display:inline-block;border-left:1px solid gray; border-right:1px solid gray;padding:0 5px;}
+.footer-menu-list li:first-child{border:none;}
+.footer-menu-list li:last-child{border:none;}
+
  

@@ -3,6 +3,19 @@
 //RREMOVES ADMIN TOP FROM FRONT
 show_admin_bar( false );
 
+/* ALLOW SVG FILES */
+function add_svg_to_upload_mimes( $upload_mimes ) {
+	$upload_mimes['svg'] = 'image/svg+xml';
+	$upload_mimes['svgz'] = 'image/svg+xml';
+	return $upload_mimes;
+}
+add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
+
+/* DISABLE GUTENBERG */
+add_filter('use_block_editor_for_post', '__return_false');
+
+
+
 /***  LOAD SCRIPTS  ****/
 function theme_enqueue_scripts() {
 	
@@ -32,7 +45,7 @@ function theme_enqueue_scripts() {
 	wp_enqueue_script( 'sticky-header', $template_url . '/js/sticky.header.js', array( 'jquery' ), null, true );		
 	wp_enqueue_script( 'swiper-js', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array( 'jquery' ), null, true );	
-	wp_enqueue_script( 'custom-gmap', $template_url . '/js/custom-gmap.js', array( 'jquery' ), null, true );	
+	//wp_enqueue_script( 'custom-gmap', $template_url . '/js/custom-gmap.js', array( 'jquery' ), null, true );	
 	wp_enqueue_script( 'custom-script', $template_url . '/js/custom.js', array( 'jquery' ), null, true );	
 	
 }
@@ -59,15 +72,16 @@ add_action( 'admin_head', 'admin_screen_css', 1 );
 
 
 /* REGISTER MENU */
-if ( function_exists( 'register_nav_menus' ) ) {
-  	register_nav_menus(
-  		array(
-  		  'main_menu' => 'Main Menu',
-		  'mobile_menu' => 'Mobile Menu',
-		  'footer_menu' => 'Footer Menu'
-  		)
-  	);
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'main_menu' => __( 'Main Menu' ),
+      'footer_menu' => __( 'Footer Menu' )
+    )
+  );
 }
+add_action( 'init', 'register_my_menus' );
+
 
 /*EXTEND MENU WALKER CLASS */
 class Main_Menu_Sublevel_Walker extends Walker_Nav_Menu
@@ -155,17 +169,9 @@ function register_cpt_projekte() {
 }
 */
 
-/* ALLOW SVG FILES */
-function add_svg_to_upload_mimes( $upload_mimes ) {
-	$upload_mimes['svg'] = 'image/svg+xml';
-	$upload_mimes['svgz'] = 'image/svg+xml';
-	return $upload_mimes;
-}
-add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
-
 
 //GOOGLE MAP INIT. initMap is a js function name from custom-gmap.js
-add_action('wp_head', 'wpb_add_googlemap');
+/*add_action('wp_head', 'wpb_add_googlemap');
 function wpb_add_googlemap() { 
  echo ' <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLEAPIKEY&callback=initMap" async defer></script>';
 
@@ -182,7 +188,7 @@ function wpb_add_googleanalytics() {
  echo " gtag('config', 'ANALITYCSID', { 'anonymize_ip': true });";
  echo '</script>';
 }
-
+*/
 
 //DEFER SOME SCRIPTS TO LOAD AT BOTTOM AND LEAVE BANWIDTH FOR LOADING 
 /*
