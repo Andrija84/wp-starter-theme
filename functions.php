@@ -1,6 +1,6 @@
 <?php
 
-//Removes admin bar from TOP
+//RREMOVES ADMIN TOP FROM FRONT
 show_admin_bar( false );
 
 /***  LOAD SCRIPTS  ****/
@@ -35,13 +35,11 @@ function theme_enqueue_scripts() {
 	wp_enqueue_script( 'custom-gmap', $template_url . '/js/custom-gmap.js', array( 'jquery' ), null, true );	
 	wp_enqueue_script( 'custom-script', $template_url . '/js/custom.js', array( 'jquery' ), null, true );	
 	
-
-
 }
-
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts', 1 );
 
-/* Load css in admin area
+
+/* LOAD CSS IN ADMIN AREA
 function admin_screen_css() { 
 
     $template_url = get_template_directory_uri();
@@ -51,7 +49,7 @@ function admin_screen_css() {
 add_action( 'admin_head', 'admin_screen_css', 1 );
 */
 
-//Add thumbnail, automatic feed links and title tag support
+//POST/PAGE thumbnails support 
 //add_theme_support( 'post-thumbnails' );
 //add_theme_support( 'automatic-feed-links' );
 //add_theme_support( 'title-tag' );
@@ -60,10 +58,7 @@ add_action( 'admin_head', 'admin_screen_css', 1 );
 //add_image_size( 'singlepost-thumb', 590, 9999 ); // Unlimited Height Mode
 
 
-
-
-
-/*  REGISTER MENU  */
+/* REGISTER MENU */
 if ( function_exists( 'register_nav_menus' ) ) {
   	register_nav_menus(
   		array(
@@ -74,6 +69,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
   	);
 }
 
+/*EXTEND MENU WALKER CLASS */
 class Main_Menu_Sublevel_Walker extends Walker_Nav_Menu
 {
     function start_lvl( &$output, $depth = 0, $args = array() ) {
@@ -207,7 +203,6 @@ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
 
 //REDIRECTS IF NEEDED
-//Remove direct access to some products, because they can be sold only in bundle
 /*
 function custom_restricts() {
 	global $post;	

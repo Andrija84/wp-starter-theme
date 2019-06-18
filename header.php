@@ -6,20 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-        <meta name="robots" content="index,follow" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="Content-Language" content="de" />
-        <meta http-equiv="pragma" content="no-cache" />
-        <meta name="publisher" content="OOMPA design" />
-        <meta name="Keywords" content="OOMPA, OOMPA design, OOMPAdesign, werbeagentur Stuttgart, Stuttgart, OOMPA-design, design leistungen Stuttgart, grafikdesign, grafikdesign in Stuttgart, grafik, Stuttgart Webagentur, corporate Design, photographie, photo, logodesign, wallpapers, webdesign, Firmenbroschüren, Konzeption, Fotografie, Identity, illustartion,    Illustrationen, art, artdesign, web-konzepte, Marketing, CD- Covergestalltung, printmedien, printprodukte, booklets, Grafische gestalltung, internet design, Bildbearbeitung, composing" />
-        <meta name="Description" content="Sie interessieren sich für einzigartiges Design, eine außergewöhnliche Unternehmensdarstellung, eine Website, Corporate Design oder eine komplexe Bildbearbeitung/Composing? Schauen Sie sich um und lernen Sie die OOMPA Design kennen. Effizient, schnell und kostenbewusst. " />
-        <meta name="author" content="OOMPA DESIGN Predrag Krstic">
-        <meta name="page-topic" content="Design, Dienstleistungen" />
-        <meta name="audience" content="alle">
+	<meta name="robots" content="index,follow" />
+	<meta name="revisit-after" content="7 days" />
+	<meta name="Content-Language" content="de" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta name="publisher" content="OOMPA design" />
+	<meta name="Keywords" content="OOMPA, OOMPA design, OOMPAdesign, werbeagentur Stuttgart, Stuttgart, OOMPA-design, design leistungen Stuttgart, grafikdesign, grafikdesign in Stuttgart, grafik, Stuttgart Webagentur, corporate Design, photographie, photo, logodesign, wallpapers, webdesign, Firmenbroschüren, Konzeption, Fotografie, Identity, illustartion,    Illustrationen, art, artdesign, web-konzepte, Marketing, CD- Covergestalltung, printmedien, printprodukte, booklets, Grafische gestalltung, internet design, Bildbearbeitung, composing" />
+	<meta name="Description" content="Sie interessieren sich für einzigartiges Design, eine außergewöhnliche Unternehmensdarstellung, eine Website, Corporate Design oder eine komplexe Bildbearbeitung/Composing? Schauen Sie sich um und lernen Sie die OOMPA Design kennen. Effizient, schnell und kostenbewusst. " />
+	<meta name="author" content="OOMPA DESIGN Predrag Krstic">
+	<meta name="page-topic" content="Design, Dienstleistungen" />
+	<meta name="audience" content="alle">
 
-		<meta name="google-site-verification" content="r5nZ19vDGdaBNzv40IF29cAF6HKlXteucytL4byN0L0" />
+	<meta name="google-site-verification" content="" />
 
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 	<!-- Favicons
 	================================================== -->

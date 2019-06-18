@@ -59,16 +59,16 @@
 	
 	
 	//Open/Close burger mobile menu
-  $('.burger, .overlay,.main-menu-list li > a').click(function(){
+    $('.burger, .overlay,.main-menu-list li > a').click(function(){
 	  $('.burger').toggleClass('clicked');
 	  $('.overlay').toggleClass('show');
 	  $('nav').toggleClass('show');
 	  $('.main-menu-list').toggleClass('show');
 	  $('body').toggleClass('overflow');
-});
+    });
 
 
-
+    //Fancybox / Lightbox
 	$('[data-fancybox=""]').fancybox({
 		
 		beforeShow: function() {
@@ -103,6 +103,9 @@
 		
 	  },
 	});
+
+
+
 
 	
 })( jQuery );

@@ -9,7 +9,7 @@
 
 <?php get_template_part( 'nav' ); // Navigation bar (nav.php) ?>
                 
-<div class="">
+<div id="">
 <div class="container">
 
    
