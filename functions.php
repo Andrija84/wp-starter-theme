@@ -206,7 +206,7 @@ add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
 
 
-//Redirects if needed
+//REDIRECTS IF NEEDED
 //Remove direct access to some products, because they can be sold only in bundle
 /*
 function custom_restricts() {
