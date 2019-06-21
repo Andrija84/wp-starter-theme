@@ -1,7 +1,7 @@
 (function($) {
 	
 	//AOS activate animation when enter viewport
-	//AOS.init();
+	 AOS.init();
 	
 	//Nicescroll fixed
 	//$("html").niceScroll();
