@@ -1,10 +1,10 @@
 (function($) {
 	
 	//AOS activate animation when enter viewport
-	AOS.init();
+	//AOS.init();
 	
 	//Nicescroll fixed
-	$("html").niceScroll();
+	//$("html").niceScroll();
 
     //Swiper slider init
     var swiper = new Swiper('.logo-swiper-container', {
@@ -104,6 +104,15 @@
 	  },
 	});
 
+
+    
+	//RANDOMIZE SECTIONS
+	var cards = $("SECTION_CLASS");
+	for(var i = 0; i < cards.length; i++){
+		var target = Math.floor(Math.random() * cards.length -1) + 1;
+		var target2 = Math.floor(Math.random() * cards.length -1) +1;
+		cards.eq(target).before(cards.eq(target2));
+	}
 
 
 
