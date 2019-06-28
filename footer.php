@@ -19,7 +19,7 @@
                     
                     
                     <div class="footer-left" style="">
-						<strong style="color:#000;">OOMPA DESIGN</strong> © 2019 Alle Rechte vorbehalten.
+						<strong style="color:#000;">OOMPA DESIGN</strong> © <?php echo wpb_copyright(); ?> Alle Rechte vorbehalten.
 					</div>
                     <div class="footer-right" style="">
 						

@@ -1,7 +1,23 @@
 <?php
 
-//RREMOVES ADMIN TOP FROM FRONT
+//REMOVES ADMIN TOP FROM FRONT
 show_admin_bar( false );
+
+//REMOVES WELCOME DASH PANEL
+remove_action('welcome_panel', 'wp_welcome_panel');
+
+//DISABLE XML-RPC	
+add_filter('xmlrpc_enabled', '__return_false');
+
+//REMOVE QUERY STRING FOR STATIC FILES
+function remove_cssjs_ver( $src ) {
+if( strpos( $src, '?ver=' ) )
+$src = remove_query_arg( 'ver', $src );
+return $src;
+}
+add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
+add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );
+
 
 /* REMOVE TAHANK YOU NOTIFICATION FROM DASHBOARD */
  function remove_footer_admin (){
@@ -28,12 +44,28 @@ function my_login_logo() { ?>
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 
+
+
 //REDIRECT ADMIN LOGO TO HOME
 add_filter( 'login_headerurl', 'custom_loginlogo_url' );
 function custom_loginlogo_url($url) {
 	return esc_url( home_url( '/' ) );
 }
 
+//REMOVE WP VERSION
+function wpb_remove_version() {
+return '';
+}
+add_filter('the_generator', 'wpb_remove_version');
+
+
+/* HIDE WP UPDATE */
+function hide_update_notice_to_all_but_admin() {
+    if ( !current_user_can( 'update_core' ) ) {
+        remove_action( 'admin_notices', 'update_nag', 3 );
+    }
+}
+add_action( 'admin_head', 'hide_update_notice_to_all_but_admin', 1 );
 
 
 /* REMOVE WP EMOJI SCRIPT */
@@ -512,97 +544,104 @@ function wpartisan_sanitize_file_name( $filename ) {
  
 add_filter( 'sanitize_file_name', 'wpartisan_sanitize_file_name', 10, 1 );
 
+/* AUTO COPYRIGHT DATE <?php echo wpb_copyright(); ?> */
 
-/**
- * CLASS LIMIT LOGIN ATTEMPTS
- * Prevent Mass WordPress Login Attacks by setting locking the system when login fail.
- * To be added in functions.php or as an external file.
- */
-if ( ! class_exists( 'Limit_Login_Attempts' ) ) {
-    class Limit_Login_Attempts {
-  
-        var $failed_login_limit = 3;                    //Number of authentication accepted
-        var $lockout_duration   = 1800;                 //Stop authentication process for 30 minutes: 60*30 = 1800
-        var $transient_name     = 'attempted_login';    //Transient used
-  
-        public function __construct() {
-            add_filter( 'authenticate', array( $this, 'check_attempted_login' ), 30, 3 );
-            add_action( 'wp_login_failed', array( $this, 'login_failed' ), 10, 1 );
-        }
-  
-        /**
-         * Lock login attempts of failed login limit is reached
-         */
-        public function check_attempted_login( $user, $username, $password ) {
-            if ( get_transient( $this->transient_name ) ) {
-                $datas = get_transient( $this->transient_name );
-  
-                if ( $datas['tried'] >= $this->failed_login_limit ) {
-                    $until = get_option( '_transient_timeout_' . $this->transient_name );
-                    $time = $this->when( $until );
-  
-                    //Display error message to the user when limit is reached
-                    return new WP_Error( 'too_many_tried', sprintf( __( '<strong>ERROR</strong>: You have reached authentication limit, you will be able to try again in %1$s.' ) , $time ) );
-                }
-            }
-  
-            return $user;
-        }
-  
-  
-        /**
-         * Add transient
-         */
-        public function login_failed( $username ) {
-            if ( get_transient( $this->transient_name ) ) {
-                $datas = get_transient( $this->transient_name );
-                $datas['tried']++;
-  
-                if ( $datas['tried'] <= $this->failed_login_limit )
-                    set_transient( $this->transient_name, $datas , $this->lockout_duration );
-            } else {
-                $datas = array(
-                    'tried'     => 1
-                );
-                set_transient( $this->transient_name, $datas , $this->lockout_duration );
-            }
-        }
-  
-  
-        /**
-         * Return difference between 2 given dates
-         * @param  int      $time   Date as Unix timestamp
-         * @return string           Return string
-         */
-        private function when( $time ) {
-            if ( ! $time )
-                return;
-  
-            $right_now = time();
-  
-            $diff = abs( $right_now - $time );
-  
-            $second = 1;
-            $minute = $second * 60;
-            $hour = $minute * 60;
-            $day = $hour * 24;
-  
-            if ( $diff < $minute )
-                return floor( $diff / $second ) . ' secondes';
-  
-            if ( $diff < $minute * 2 )
-                return "about 1 minute ago";
-  
-            if ( $diff < $hour )
-                return floor( $diff / $minute ) . ' minutes';
-  
-            if ( $diff < $hour * 2 )
-                return 'about 1 hour';
-  
-            return floor( $diff / $hour ) . ' hours';
-        }
-    }
+function wpb_copyright() {
+global $wpdb;
+$copyright_dates = $wpdb->get_results("
+SELECT
+YEAR(min(post_date_gmt)) AS firstdate,
+YEAR(max(post_date_gmt)) AS lastdate
+FROM
+$wpdb->posts
+WHERE
+post_status = 'publish'
+");
+$output = '';
+if($copyright_dates) {
+$copyright = "© " . $copyright_dates[0]->firstdate;
+if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+$copyright .= '-' . $copyright_dates[0]->lastdate;
 }
-  
-//Enable it:
-new Limit_Login_Attempts();
+$output = $copyright;
+}
+return $output;
+}
+
+
+/* DISABLE LOGIN BY EMAIL */
+remove_filter( 'authenticate', 'wp_authenticate_email_password', 20 );
+
+
+/* DISABLE SEARCH FUNCTION AT ALL */
+function fb_filter_query( $query, $error = true ) {
+ 
+if ( is_search() ) {
+$query->is_search = false;
+$query->query_vars[s] = false;
+$query->query[s] = false;
+ 
+// to error
+if ( $error == true )
+$query->is_404 = true;
+}
+}
+ 
+add_action( 'parse_query', 'fb_filter_query' );
+add_filter( 'get_search_form', create_function( '$a', "return null;" ) );
+
+
+/* IF NEEDED CRATE ADMIN USER */
+/*
+function wpb_admin_account(){
+$user = 'Username';
+$pass = 'Password';
+$email = 'email@domain.com';
+if ( !username_exists( $user )  && !email_exists( $email ) ) {
+$user_id = wp_create_user( $user, $pass, $email );
+$user = new WP_User( $user_id );
+$user->set_role( 'administrator' );
+} }
+add_action('init','wpb_admin_account');
+*/
+
+
+
+/* REMOVES COMMENTS */
+ 
+// Removes from admin menu
+
+function my_remove_admin_menus() {
+    remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'my_remove_admin_menus' );
+
+// Removes from post and pages
+function remove_comment_support() {
+    remove_post_type_support( 'post', 'comments' );
+    remove_post_type_support( 'page', 'comments' );
+}
+add_action( 'init', 'remove_comment_support', 100 );
+
+// Removes from admin bar
+function mytheme_admin_bar_render() {
+    global $wp_admin_bar;
+    
+    $wp_admin_bar->remove_menu( 'comments' );
+}
+add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
+
+
+
+/* DISABLE JSON REST API */
+
+add_filter('json_enabled', '__return_false');
+add_filter('json_jsonp_enabled', '__return_false');
+
+
+/* DISABLE JQUERY MIGRATE */
+add_action('wp_default_scripts', function ($scripts) {
+    if (!empty($scripts->registered['jquery'])) {
+        $scripts->registered['jquery']->deps = array_diff($scripts->registered['jquery']->deps, ['jquery-migrate']);
+    }
+});
