@@ -4,8 +4,7 @@ Wordpress Starter Theme - Some useful features built in
 No CSS frameworks
 Ideal for pixel perfect conversion PSD -> HTML
 
-List of functions implemented 
-
+List of functions implemented
 
 REMOVES ADMIN TOP FROM FRONT
 
