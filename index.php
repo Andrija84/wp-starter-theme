@@ -14,5 +14,8 @@
                     <h1>THIS IS WORDPRESS STARTER THEME</h1>
 					<div>
                     <div style="height:32px;"></div>                                    
-            </div>			
+            </div>
+</div>
+</div>
+</div>			
 <?php	get_footer(); ?> 
