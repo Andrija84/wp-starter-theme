@@ -177,6 +177,26 @@ function register_cpt_projekte() {
 }
 */
 
+
+
+/* REGISTER CUSTOM POST TYPE TAXONOMY*/
+/*
+add_action( 'init', 'create_referenze_taxonomy' );
+
+function create_referenze_taxonomy() {
+	register_taxonomy(
+		'type',
+		'referenze',
+		array(
+			'label' => __( 'Type' ),
+			'rewrite' => array( 'slug' => 'type' ),
+			'hierarchical' => true,
+		)
+	);
+}
+
+*/
+
 //CHANGE CHECKBOX TO RADIO BUTTONS FOR CUSTOM TAX TERM
 /*
 function taxonomy_checkbox_to_radio_tax( $args ) {
