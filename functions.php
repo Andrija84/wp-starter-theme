@@ -7,42 +7,42 @@ require_once( __DIR__ . '/functions/google.php');
 
 /***  LOAD SCRIPTS  ****/
 function theme_enqueue_scripts() {
-	
+
 	$template_url = get_template_directory_uri();
 
 	//jQuery.
-	wp_enqueue_script( 'jquery' );	
+	wp_enqueue_script( 'jquery' );
 	//De-register WP Jquery and use latest from CDN
 	//wp_deregister_script('jquery');
 	//wp_register_script('jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', false, '3.2.1');
 	//wp_enqueue_script('jquery');
-	
+
 	//Main Style
 	wp_enqueue_style( 'main-style', get_stylesheet_uri() );
 
 	//CSS
-	wp_enqueue_style( 'swiper-css','https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css' );	
+	wp_enqueue_style( 'swiper-css','https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css' );
 	wp_enqueue_style( 'fontawesome-5', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
-    wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css' );	
+  wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css' );	
 	wp_enqueue_style( 'aos-css', 'https://unpkg.com/aos@next/dist/aos.css' );
 	wp_enqueue_style( 'burger-menu', $template_url . '/css/burger_menu.css' );
 	wp_enqueue_style( 'media_query', $template_url . '/css/media_query.css' );
-	
+
     //JS
 	wp_enqueue_script( 'fancybox-script', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js', array( 'jquery' ), null, false );
-	wp_enqueue_script( 'nicescroll-js',  $template_url .'/js/jquery.nicescroll.min.js', array( 'jquery' ), null, true );	
-	wp_enqueue_script( 'sticky-header', $template_url . '/js/sticky.header.js', array( 'jquery' ), null, true );		
+	wp_enqueue_script( 'nicescroll-js',  $template_url .'/js/jquery.nicescroll.min.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'sticky-header', $template_url . '/js/sticky.header.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'swiper-js', 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js', array( 'jquery' ), null, true );
-	wp_enqueue_script( 'aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array( 'jquery' ), null, true );	
-	//wp_enqueue_script( 'custom-gmap', $template_url . '/js/custom-gmap.js', array( 'jquery' ), null, true );	
-	wp_enqueue_script( 'custom-script', $template_url . '/js/custom.js', array( 'jquery' ), null, true );	
-	
+	wp_enqueue_script( 'aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array( 'jquery' ), null, true );
+	//wp_enqueue_script( 'custom-gmap', $template_url . '/js/custom-gmap.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'custom-script', $template_url . '/js/custom.js', array( 'jquery' ), null, true );
+
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts', 1 );
 
 
 /* LOAD CSS IN ADMIN AREA
-function admin_screen_css() { 
+function admin_screen_css() {
 
     $template_url = get_template_directory_uri();
 	wp_enqueue_style( 'admin-css', $template_url . '/css/admin.css' );
@@ -51,12 +51,12 @@ function admin_screen_css() {
 add_action( 'admin_head', 'admin_screen_css', 1 );
 */
 
-//POST/PAGE tnative humbnails support 
+//POST/PAGE tnative humbnails support
 //add_theme_support( 'post-thumbnails' );
 //add_image_size( 'sidebar-thumb', 120, 120, true ); // Hard Crop Mode
 //add_image_size( 'homepage-thumb', 220, 180 ); // Soft Crop Mode
 //add_image_size( 'singlepost-thumb', 590, 9999 ); // Unlimited Height Mode
-//use it on template  the_post_thumbnail( 'sidebar-thumb' ); 
+//use it on template  the_post_thumbnail( 'sidebar-thumb' );
 
 
 
@@ -145,7 +145,7 @@ function register_cpt_projekte() {
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'projekte' ),	
+		'rewrite'            => array( 'slug' => 'projekte' ),
 		//'capabilities' => array(
 		//'read_post'					=> 'read_foo',
 		//'read_private_posts' 		=> 'read_private_foos',
@@ -160,8 +160,8 @@ function register_cpt_projekte() {
 		//'delete_published_posts'	=> 'delete_published_foos',
 		//'delete_private_posts'		=> 'delete_private_foos',
 		//'publish_posts'				=> 'publish_foos',
-		//), 
-	    //'map_meta_cap' =>      true,				
+		//),
+	    //'map_meta_cap' =>      true,
 		//'has_archive'        => true,
 		'hierarchical'       => true,
 		'menu_position'      => 5,
@@ -170,9 +170,9 @@ function register_cpt_projekte() {
         'rest_base'          => 'projekte',
         'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'supports'           => array( 'title','thumbnail')
-	);	
+	);
 
-	register_post_type( 'projekte', $args );    
+	register_post_type( 'projekte', $args );
 	flush_rewrite_rules();
 }
 */
@@ -231,14 +231,14 @@ add_filter( 'wp_terms_checklist_args', 'taxonomy_checkbox_to_radio_tax' );
 //REDIRECTS IF NEEDED
 /*
 function custom_restricts() {
-	global $post;	
-	$page_id = $post->ID;	
-	     
+	global $post;
+	$page_id = $post->ID;
+
     if( $page_id == 2337 )
     {
         wp_redirect( '/' );
         die;
-    }    
+    }
 }
 add_action( 'template_redirect', 'custom_restricts' );
 */
@@ -260,20 +260,20 @@ function get_news_categories() {
 	$terms = get_terms($args);
 
     $filters_html = false;
- 
+
     if( $terms ):
         $filters_html = '<ul>';
- 
+
         foreach( $terms as $term )
         {
             $term_id = $term->term_id;
             $term_name = $term->name;
-			
+
             $filters_html .= '<li class=""><a href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a></li>';
-       
+
         }
         $filters_html .= '</ul>';
- 
+
         return $filters_html;
     endif;
 }
@@ -304,7 +304,7 @@ function assign_parent_terms($post_id, $post){
     if($post->post_type != 'CPT_NAME')
         return $post_id;
 
-    // get all assigned terms   
+    // get all assigned terms
     $terms = wp_get_post_terms($post_id, 'TAX_SLUG' );
     foreach($terms as $term){
         while($term->parent != 0 && !has_term( $term->parent, 'TAX_SLUG', $post )){
@@ -312,7 +312,7 @@ function assign_parent_terms($post_id, $post){
             wp_set_post_terms($post_id, array($term->parent), 'TAX_SLUG', true);
             $term = get_term($term->parent, 'TAX_SLUG');
         }
-    } 
+    }
 }
 
 */
@@ -346,22 +346,17 @@ global $wpdb;
 
 /* DISABLE SEARCH FUNCTION AT ALL */
 function fb_filter_query( $query, $error = true ) {
- 
+
 if ( is_search() ) {
 $query->is_search = false;
 $query->query_vars[s] = false;
 $query->query[s] = false;
- 
+
 // to error
 if ( $error == true )
 $query->is_404 = true;
 }
 }
- 
+
 add_action( 'parse_query', 'fb_filter_query' );
 add_filter( 'get_search_form', create_function( '$a', "return null;" ) );
-
-
-
-
-
