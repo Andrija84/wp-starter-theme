@@ -3,6 +3,8 @@
 require_once( __DIR__ . '/functions/admin.php');
 require_once( __DIR__ . '/functions/optimize.php');
 require_once( __DIR__ . '/functions/google.php');
+require_once( __DIR__ . '/functions/acf.php');
+
 
 
 /***  LOAD SCRIPTS  ****/
@@ -23,7 +25,7 @@ function theme_enqueue_scripts() {
 	//CSS
 	wp_enqueue_style( 'swiper-css','https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css' );
 	wp_enqueue_style( 'fontawesome-5', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
-  wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css' );	
+  wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css' );
 	wp_enqueue_style( 'aos-css', 'https://unpkg.com/aos@next/dist/aos.css' );
 	wp_enqueue_style( 'burger-menu', $template_url . '/css/burger_menu.css' );
 	wp_enqueue_style( 'media_query', $template_url . '/css/media_query.css' );
