@@ -87,17 +87,35 @@ class Main_Menu_Sublevel_Walker extends Walker_Nav_Menu
     }
 }
 
-class Mobile_Main_Menu_Sublevel_Walker extends Walker_Nav_Menu
-{
-    function start_lvl( &$output, $depth = 0, $args = array() ) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class='mobile-sub-menu'>\n";
+//Set class for sub menu
+class Mobile_Main_Menu_Sublevel_Walker extends Walker_Nav_Menu {
+  function start_lvl(&$output, $depth) {
+
+    if ( 0 == $depth ) {
+      $indent = str_repeat("\t", $depth);
+      $output .= "\n$indent<ul class=\"mobile-sub-menu\">\n";
     }
-    function end_lvl( &$output, $depth = 0, $args = array() ) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "$indent</ul>\n";
+    if ( 1 == $depth ) {
+      $indent = str_repeat("\t", $depth);
+      $output .= "\n$indent<ul class=\"mobile-sub-sub-menu\">\n";
     }
+
+  }
+
+	function end_lvl(&$output, $depth) {
+		if ( 0 == $depth ) {
+			$indent = str_repeat("\t", $depth);
+			$output .= "$indent</ul>\n";
+		}
+		if ( 1 == $depth ) {
+			$indent = str_repeat("\t", $depth);
+			$output .= "$indent</ul>\n";
+		}
+	}
 }
+
+
+
 
 //REGISTER WIDGETS AREA
 //DISPLAY INSIDE TEMPLATE
