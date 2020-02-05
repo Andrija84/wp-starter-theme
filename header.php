@@ -1,68 +1,115 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="utf-8">
-<!-- <meta charset="<?php bloginfo( 'charset' ); ?>" /> -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta charset="UTF-8" />
+	<title><?php wp_title(); ?></title>
 
-	<meta name="robots" content="index,follow" />
-	<meta name="revisit-after" content="7 days" />
-	<meta name="Content-Language" content="de" />
-	<meta http-equiv="pragma" content="no-cache" />
-	<meta name="publisher" content="OOMPA design" />
-	<meta name="Keywords" content="OOMPA, OOMPA design, OOMPAdesign, werbeagentur Stuttgart, Stuttgart, OOMPA-design, design leistungen Stuttgart, grafikdesign, grafikdesign in Stuttgart, grafik, Stuttgart Webagentur, corporate Design, photographie, photo, logodesign, wallpapers, webdesign, Firmenbroschüren, Konzeption, Fotografie, Identity, illustartion,    Illustrationen, art, artdesign, web-konzepte, Marketing, CD- Covergestalltung, printmedien, printprodukte, booklets, Grafische gestalltung, internet design, Bildbearbeitung, composing" />
-	<meta name="Description" content="Sie interessieren sich für einzigartiges Design, eine außergewöhnliche Unternehmensdarstellung, eine Website, Corporate Design oder eine komplexe Bildbearbeitung/Composing? Schauen Sie sich um und lernen Sie die OOMPA Design kennen. Effizient, schnell und kostenbewusst. " />
-	<meta name="author" content="OOMPA DESIGN Predrag Krstic">
-	<meta name="page-topic" content="Design, Dienstleistungen" />
-	<meta name="audience" content="alle">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no">
 
-	<meta name="google-site-verification" content="" />
+	<link rel="icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_32x32.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_120x120.png"/>
+	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_152x152.png"/>
+	<link rel="apple-touch-icon" sizes="167x167" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_167x167.png"/>
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_180x180.png"/>
 
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	<meta name="description" content="[ ARTICLE DESCRIPTION ]" />
+	<meta name="author" content="[ AUTHOR FULL NAME ]" />
+	<link rel="canonical" href="[ SITE URL ]" />
 
-	<!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.png">
-	<link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_stylesheet_directory_uri(); ?>/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_stylesheet_directory_uri(); ?>/apple-touch-icon-114x114.png">
+	<meta itemprop="name" content="[ TITLE ]" />
+	<meta itemprop="image" content="[ LISTING IMAGE ]" />
+	<meta itemprop="description" content="[ ARTICLE DESCRIPTION ]" />
+	<!-- Google + OpenGraph  -->
+	<meta property="article:author" content="[ GOOGLE+ AUTHOR URL ]" />
+	<meta property="article:published_time" content="[ PUBLISHED TIMESTAMP ]" />
+	<meta property="article:section" content="[ CATEGORY ]" />
+	<!-- Facebook OpenGraph  -->
+	<meta property="og:title" content="[ TITLE ]" />
+	<meta property="og:type" content="article" />
+	<meta property="og:description" content="[ ARTICLE DESCRIPTION ]" />
+	<meta property="og:image" content="[ LISTING IMAGE ]" />
+	<meta property="og:url" content="[ CANONICAL URL OF ITEM ]" />
+	<meta property="og:site_name" content="[ WEBSITE NAME ]" />
+	<!-- Twitter OpenGraph  -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="[ TITLE ]">
+	<meta name="twitter:description" content="[ ARTICLE DESCRIPTION ]">
+	<meta name="twitter:image" content="[ LISTING IMAGE ]">
+	<meta name="twitter:url" content="[ CANONICAL URL OF ITEM ]">
 
-<!-- // touch icons -->
-<title><?php wp_title(); ?></title>
+	<!-- Disable Pinterest pins  -->
+	<meta name="pinterest-rich-pin" content="false" />
 
+	<!-- Pingback  -->
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-<!-- // Tell search engine witch language to show for country language -->
-<meta name="google-site-verification" content="" />
-<meta name="msvalidate.01" content="" />
-<meta name="alexaVerifyID" content=""/>
-<link rel="publisher" href="" />
-<meta name="p:domain_verify" content=""/>
-<!-- OpenGraph - Mainly Facebook -->
-<meta property="og:title" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="" />
-<meta property="og:image" content="" />
-<meta property="fb:pages" content="" />
-<meta property="og:site_name" content="" />
-<meta property="fb:admins" content="" />
-<meta property="og:description" content="" />
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:site" content="" />
-<meta name="twitter:creator" content="" />
-<meta name="twitter:url" content=""/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
-<meta name="twitter:image" content="" />
+	<!-- Prefetch local fonts  -->
+	<link rel="prefetch" href="[ FONTS URL ]" type="font/ttf">
+	<link rel="preload" href="[ FONTS URL ]" type="font/ttf">
+	<!-- EXTRA  -->
+	<link rel='dns-prefetch' href='//html5shiv.googlecode.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel="alternate" type="application/rss+xml" title="[ WEBSITE NAME ]" href="https://[ SITE URL ]/feed/" />
+	<!-- Web manifest -->
+	<link rel="manifest" href="/manifest.json">
 
-<!--[if lt IE 9]>
-<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<!--[if IE 7]>
-<link rel="stylesheet" href="css/font-awesome-ie7.min.css">
-<link rel="stylesheet" href="css/fontello-ie7.css">
-<![endif]-->
+	<!-- HTML schema  -->
+	<script type="application/ld+json">
+	{
+		"@context":"https://schema.org",
+		"@type":"Organization",
+		"@id":"[ WEBSITE URL ]",
+		"name":"[ WEBSITE TITLE ]",
+		"logo":"[ WEBSITE LOGO URL ]",
+		"location":{
+			"@type":"Place",
+			"address":{
+				"@type":"PostalAddress",
+				"streetAddress":"Glashuettenstrasse 79",
+				"addressLocality":"Hamburg",
+				"postalCode":"20357",
+				"addressCountry":"Germany",
+				"hoursAvailable":[
+					{
+						"@type":"OpeningHoursSpecification",
+						"validFrom":"2019-02-12",
+						"opens":"09:00",
+						"closes":"18:00"
+					}
+				]
+			}
+		},
+		"description":"Jung von Matt provides its clients with creative and efficient marketing communication across all channels and disciplines.",
+		"url":"https://www.jvm.com/de/",
+		"telephone":"+49 40 4321-0"
+	}
+	</script>
+	<!-- Web manifest  -->
+	<script type="application/manifest+json">
+	{
+	name: "[ WEBSITE TITLE ]",
+	short_name: "[ WEBSITE SHORTNAME ]",
+	start_url: "[ WEBSITE URL ]",
+	icons: [
+	{
+	src: "[ WEBSITE IMAGE URL ]",
+	sizes: "192x192",
+	type: "image/png"
+	},
+	{
+	src: "[ WEBSITE IMAGE URL ]",
+	sizes: "512x512",
+	type: "image/png"
+	}
+	],
+	theme_color: "#ffffff",
+	background_color: "#ffffff",
+	display: "standalone"
+	}
+	</script>
 <?php wp_head(); ?>
 
 </head>
