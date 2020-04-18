@@ -19,12 +19,18 @@ function theme_enqueue_scripts() {
 	//wp_register_script('jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', false, '3.2.1');
 	//wp_enqueue_script('jquery');
 
+  /* Load script if is single ONLY !
+	if(is_single()){
+		wp_enqueue_style('materialize-css',  get_stylesheet_directory_uri() . '/assets/css/materialize.css', array(), '0.1.0', 'all');
+	}
+	*/
+
 	//Main Style
 	wp_enqueue_style( 'main-style', get_stylesheet_uri() );
 
 	//CSS
 	wp_enqueue_style( 'swiper-css','https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css' );
-	wp_enqueue_style( 'fontawesome-5', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
+	wp_enqueue_style( 'fontawesome-5', $template_url . '/css/fontawesome_5_pro_all.min.css' );
   wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css' );
 	wp_enqueue_style( 'aos-css', 'https://unpkg.com/aos@next/dist/aos.css' );
 	wp_enqueue_style( 'burger-menu', $template_url . '/css/burger_menu.css' );
@@ -67,6 +73,7 @@ function register_my_menus() {
   register_nav_menus(
     array(
       'main_menu' => __( 'Main Menu' ),
+			'mobile_menu' => __( 'Mobile Menu' ),
       'footer_menu' => __( 'Footer Menu' )
     )
   );
@@ -87,10 +94,10 @@ class Main_Menu_Sublevel_Walker extends Walker_Nav_Menu
     }
 }
 
+
 //Set class for sub menu
 class Mobile_Main_Menu_Sublevel_Walker extends Walker_Nav_Menu {
-  function start_lvl(&$output, $depth) {
-
+  function start_lvl( &$output, $depth = 0, $args = array() ) {
     if ( 0 == $depth ) {
       $indent = str_repeat("\t", $depth);
       $output .= "\n$indent<ul class=\"mobile-sub-menu\">\n";
@@ -99,22 +106,21 @@ class Mobile_Main_Menu_Sublevel_Walker extends Walker_Nav_Menu {
       $indent = str_repeat("\t", $depth);
       $output .= "\n$indent<ul class=\"mobile-sub-sub-menu\">\n";
     }
-
   }
-
-	function end_lvl(&$output, $depth) {
+	
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		if ( 0 == $depth ) {
 			$indent = str_repeat("\t", $depth);
-			$output .= "$indent</ul>\n";
+			$output .= "\n$indent<ul class=\"mobile-sub-menu\">\n";
 		}
 		if ( 1 == $depth ) {
 			$indent = str_repeat("\t", $depth);
-			$output .= "$indent</ul>\n";
+			$output .= "\n$indent<ul class=\"mobile-sub-sub-menu\">\n";
 		}
 	}
+
+
 }
-
-
 
 
 //REGISTER WIDGETS AREA

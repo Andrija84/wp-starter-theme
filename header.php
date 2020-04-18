@@ -9,11 +9,11 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no">
 
-	<link rel="icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_32x32.png" />
-	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_120x120.png"/>
-	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_152x152.png"/>
-	<link rel="apple-touch-icon" sizes="167x167" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_167x167.png"/>
-	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon_180x180.png"/>
+	<link rel="icon" type="image/png" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_32x32.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_120x120.png"/>
+	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_152x152.png"/>
+	<link rel="apple-touch-icon" sizes="167x167" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_167x167.png"/>
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_180x180.png"/>
 
 	<meta name="description" content="[ ARTICLE DESCRIPTION ]" />
 	<meta name="author" content="[ AUTHOR FULL NAME ]" />
@@ -47,14 +47,13 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 	<!-- Prefetch local fonts  -->
-	<link rel="prefetch" href="[ FONTS URL ]" type="font/ttf">
-	<link rel="preload" href="[ FONTS URL ]" type="font/ttf">
+	<link rel="prefetch" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirLTStd-Medium.otf" type="font/otf">
+	<link rel="prefetch" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirLTStd-Black.otf" type="font/otf">
 	<!-- EXTRA  -->
 	<link rel='dns-prefetch' href='//html5shiv.googlecode.com' />
 	<link rel='dns-prefetch' href='//s.w.org' />
 	<link rel="alternate" type="application/rss+xml" title="[ WEBSITE NAME ]" href="https://[ SITE URL ]/feed/" />
-	<!-- Web manifest -->
-	<link rel="manifest" href="/manifest.json">
+
 
 	<!-- HTML schema  -->
 	<script type="application/ld+json">
@@ -63,7 +62,7 @@
 		"@type":"Organization",
 		"@id":"[ WEBSITE URL ]",
 		"name":"[ WEBSITE TITLE ]",
-		"logo":"[ WEBSITE LOGO URL ]",
+		"logo":"<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_512x512.png",
 		"location":{
 			"@type":"Place",
 			"address":{
@@ -95,12 +94,12 @@
 	start_url: "[ WEBSITE URL ]",
 	icons: [
 	{
-	src: "[ WEBSITE IMAGE URL ]",
+	src: "<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_192x192.png",
 	sizes: "192x192",
 	type: "image/png"
 	},
 	{
-	src: "[ WEBSITE IMAGE URL ]",
+	src: "<?php echo get_stylesheet_directory_uri(); ?>/images/favicon_512x512.png",
 	sizes: "512x512",
 	type: "image/png"
 	}
@@ -110,6 +109,7 @@
 	display: "standalone"
 	}
 	</script>
+
 <?php wp_head(); ?>
 
 </head>

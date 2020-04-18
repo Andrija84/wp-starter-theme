@@ -9,12 +9,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /* FONTS */
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 @font-face {
-	font-family: 'Bauer-Bodoni-Std-Roman';
-	src: local('Bauer-Bodoni-Std-Roman'), url(./fonts/Bauer-Bodoni-Std-Roman.otf) format('opentype');
+	font-family: 'AvenirLTStd-Medium';
+	src: local('AvenirLTStd-Medium'), url(./fonts/AvenirLTStd-Medium.otf) format('opentype');
 }
 @font-face {
-	font-family: 'Bauer-Bodoni-Std-Bold';
-	src: local('Bauer-Bodoni-Std-Bold'), url(./fonts/Bauer-Bodoni-Std-Bold.otf) format('opentype');
+	font-family: 'AvenirLTStd-Black';
+	src: local('AvenirLTStd-Black'), url(./fonts/AvenirLTStd-Black.otf) format('opentype');
 }
 /* RESET */
 html, body, div, span, applet, object, iframe,
@@ -26,8 +26,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -38,7 +38,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -68,7 +68,7 @@ table {
 	margin: 0 auto;
 }
 h1 {
-	font-family: Bauer-Bodoni-Std-Bold;
+	font-family: AvenirLTStd-Black;
 	color:#000;
 	font-weight: 700;
 	font-size:52px;
@@ -79,7 +79,7 @@ h1 {
 	margin: 20px 0 20px 0;
 }
 h2 {
-	font-family: Bauer-Bodoni-Std-Bold;
+	font-family: AvenirLTStd-Black;
 	color:#000;
 	font-size: 42px;
 	line-height:42px;
@@ -88,7 +88,7 @@ h2 {
 	margin: 20px 0 20px 0;
 }
 h3 {
-	font-family: Bauer-Bodoni-Std-Bold;
+	font-family: AvenirLTStd-Black;
 	color:#000;
 	font-size: 32px;
 	line-height: 32px;
@@ -156,6 +156,7 @@ hr {
 }
 /* HEADER - NAV */
 header{
+	position:sticky;
 	height:110px;
 	background-color:#fff!important;
 	z-index: 99999!important;
@@ -164,9 +165,18 @@ header{
 	right: 0;
 	top:0;
 }
+header.sticky{
+	position:sticky;
+	height:100px;
+	background-color:rgba(245, 245, 245, 1);
+}
 .logo{
 	display:inline-block;
 	padding-top:10px;
+}
+header.sticky .logo{
+	width:80px;
+	height:90px;
 }
 .header-container{
 	height:110px;
@@ -247,6 +257,9 @@ nav{
 nav.show{
 	visibility: visible;
 }
+
+.mobile-menu-list{display:none;}
+
 /* FOOTER */
 #footer{
 	position: relative;
